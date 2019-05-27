@@ -1,0 +1,15 @@
+@import '../../helpers/variables';
+
+.filter-todos {
+  display: flex;
+
+  margin-bottom: $margin-m;
+
+  &__link {
+    margin-right: $margin-xs;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

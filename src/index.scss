@@ -1,0 +1,42 @@
+@import './helpers/variables.scss';
+
+body {
+  background: $color-main-light;
+}
+
+.btn {
+  border: none;
+  border-radius: .25em;
+  padding: .25em .5em;
+
+  font-size: 1.2rem;
+
+  cursor: pointer;
+}
+
+.btn--add {
+  color: $color-text-invert;
+  background: $color-btn-add;
+
+  &:hover {
+    background: lighten($color-btn-add, 10%);
+  }
+}
+
+.btn--edit {
+  color: $color-text-invert;
+  background: $color-btn-edit;
+
+  &:hover {
+    background: lighten($color-btn-edit, 10%);
+  }
+}
+
+.btn--del {
+  color: $color-text-invert;
+  background: $color-btn-del;
+
+  &:hover {
+    background: lighten($color-btn-del, 10%);
+  }
+}
