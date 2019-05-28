@@ -58,5 +58,124 @@
     "cls": "todo-list__todo",
     "paragraph": "illo est ratione doloremque quia maiores aut",
     "completed": "delete"
+  },
+  {
+    "id": 11,
+    "cls": "todo-list__todo",
+    "paragraph": "delectus aut autem",
+    "completed": "active"
+  },
+  {
+    "id": 12,
+    "cls": "todo-list__todo",
+    "paragraph": "quis ut nam facilis et officia qui",
+    "completed": "active"
+  },
+  {
+    "id": 13,
+    "cls": "todo-list__todo",
+    "paragraph": "fugiat veniam minus",
+    "completed": "active"
+  },
+  {
+    "id": 14,
+    "cls": "todo-list__todo",
+    "paragraph": "et porro tempora",
+    "completed": "complete"
+  },
+  {
+    "id": 15,
+    "cls": "todo-list__todo",
+    "paragraph": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "completed": "active"
+  },
+  {
+    "id": 16,
+    "cls": "todo-list__todo",
+    "paragraph": "qui ullam ratione quibusdam voluptatem quia omnis",
+    "completed": "active"
+  },
+  {
+    "id": 17,
+    "cls": "todo-list__todo",
+    "paragraph": "illo expedita consequatur quia in",
+    "completed": "active"
+  },
+  {
+    "id": 18,
+    "cls": "todo-list__todo",
+    "paragraph": "quo adipisci enim quam ut ab",
+    "completed": "complete"
+  },
+  {
+    "id": 19,
+    "cls": "todo-list__todo",
+    "paragraph": "molestiae perspiciatis ipsa",
+    "completed": "active"
+  },
+  {
+    "id": 20,
+    "cls": "todo-list__todo",
+    "paragraph": "illo est ratione doloremque quia maiores aut",
+    "completed": "delete"
+  },{
+    "id": 21,
+    "cls": "todo-list__todo",
+    "paragraph": "delectus aut autem",
+    "completed": "active"
+  },
+  {
+    "id": 22,
+    "cls": "todo-list__todo",
+    "paragraph": "quis ut nam facilis et officia qui",
+    "completed": "active"
+  },
+  {
+    "id": 23,
+    "cls": "todo-list__todo",
+    "paragraph": "fugiat veniam minus",
+    "completed": "active"
+  },
+  {
+    "id": 24,
+    "cls": "todo-list__todo",
+    "paragraph": "et porro tempora",
+    "completed": "complete"
+  },
+  {
+    "id": 25,
+    "cls": "todo-list__todo",
+    "paragraph": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "completed": "active"
+  },
+  {
+    "id": 26,
+    "cls": "todo-list__todo",
+    "paragraph": "qui ullam ratione quibusdam voluptatem quia omnis",
+    "completed": "active"
+  },
+  {
+    "id": 27,
+    "cls": "todo-list__todo",
+    "paragraph": "illo expedita consequatur quia in",
+    "completed": "active"
+  },
+  {
+    "id": 28,
+    "cls": "todo-list__todo",
+    "paragraph": "quo adipisci enim quam ut ab",
+    "completed": "complete"
+  },
+  {
+    "id": 29,
+    "cls": "todo-list__todo",
+    "paragraph": "molestiae perspiciatis ipsa",
+    "completed": "active"
+  },
+  {
+    "id": 30,
+    "cls": "todo-list__todo",
+    "paragraph": "illo est ratione doloremque quia maiores aut",
+    "completed": "delete"
   }
 ]

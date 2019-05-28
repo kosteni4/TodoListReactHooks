@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import Loader from './components/Loader/Loader';
 import Context from './context/Context';
@@ -11,20 +11,8 @@ const FilterTodos = React.lazy(() => import('./components/FilterTodos/FilterTodo
 const TodoList = React.lazy(() => import('./components/TodoList/TodoList'));
 const Nothing = React.lazy(() => import('./components/Nothing/Nothing'));
 
-
-
 function App() {
   const [todos, setTodos] = useState([]);
-  const [loader, setLoader] = useState(true);
-
-  useEffect(() => {
-    fetch('./data.json')
-      .then(response => response.json())
-      .then(todos => {
-        setTodos(todos);
-        setLoader(false);
-      })
-  }, []);
 
   function deleteTodo(id) {
     setTodos(todos.filter(todo => todo.id !== id));
@@ -48,15 +36,14 @@ function App() {
       <Title />
       <AddTodo addTodo={addTodo} />
       <React.Suspense fallback={<Loader />}>
-        {todos.length
-          ? <React.Fragment>
+        {todos
+          ?
+            <React.Fragment>
               <FilterTodos />
               <TodoList todos={todos} />
             </React.Fragment>
-          : loader
-            ? null
-            : <Nothing cls='paragraph'>No tasks :)</Nothing>
-        }
+          : <Nothing cls='paragraph'>No tasks!</Nothing>
+        } 
       </React.Suspense>
     </Context.Provider>
   );
