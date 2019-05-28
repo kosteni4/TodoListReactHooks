@@ -1,16 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import Context from '../../context/Context';
+import PropTypes from 'prop-types';
 
 import './Todo.scss';
 
-export default function Todo(props) {
+function Todo(props) {
   const [paragraph, editTodo] = useState([props.paragraph]);
   const [isChecked, toggleTodo] = useState(false);
   const [classActive, toggleTodoClass] = useState('');
 
   const inputRef = useRef(null);
 
-  const deleteTodo = props.deleteTodo;
-  const index = props.index;
+  const { deleteTodo } = useContext(Context);
 
   function handlerFocusTodo() {
     inputRef.current.focus();
@@ -32,11 +33,11 @@ export default function Todo(props) {
   }
 
   function handlerDeleteTodo() {
-    deleteTodo(index);
+    deleteTodo(props.id);
   }
 
   return (
-    <li className={props.className + ' todo ' + classActive}>
+    <li className={props.cls + ' todo ' + classActive}>
       <label className='todo__wrapper-checkbox'>
         <input
           className='todo__checkbox'
@@ -67,3 +68,5 @@ export default function Todo(props) {
     </li>
   );
 }
+
+export default Todo;

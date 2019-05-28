@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import './AddTodo.scss';
 
-export default function AddTodo({ addTodo }) {
+function AddTodo({ addTodo }) {
   const [value, setValue] = useState('');
 
   function handlerChange(event) {
     setValue(event.target.value);
   }
-  
+
   function handlerSubmit(event) {
     event.preventDefault();
-    if (!value.trim()) {
-      return;
+
+    if (value.trim()) {
+      addTodo(value);
+      setValue('');
     }
-    addTodo(value);
-    setValue('');
   }
 
   return (
@@ -26,12 +27,19 @@ export default function AddTodo({ addTodo }) {
         type='text'
         className='add-todo__input'
         placeholder='Your task...'
-        onChange={handlerChange}/>
+        value={value}
+        onChange={handlerChange} />
       <button
         type='submit'
         className='add-todo__btn btn btn--add'>
-          Add
+        Add
       </button>
     </form>
   );
 }
+
+AddTodo.propTypes = {
+  addTodo: PropTypes.func.isRequired
+};
+
+export default AddTodo;

@@ -1,29 +1,37 @@
 import React, { useEffect } from 'react';
-import Todo from '../Todo/Todo'
+import PropTypes from 'prop-types';
+import Todo from '../Todo/Todo';
 
 import './TodoList.scss';
 
 function TodoList(props) {
 
-  const todos = props.todoList;
-  const deleteTodo = props.deleteTodo;
+  const todos = props.todos || 0;
 
   useEffect(() => {
-    document.title = (todos.length > 1) ? todos.length + ' tasks' : todos.length + ' task';
+    document.title = todos
+      ? todos.length > 1
+        ? todos.length + ' tasks'
+        : todos.length + ' task'
+      : '0 task';
   });
 
   return (
     <ul className='todo-list'>
-      {todos.map((item, index) =>
-        <Todo key={item.id}
-              className={item.className}
-              paragraph={item.paragraph}
-              index={index.toString()}
-              deleteTodo={deleteTodo}
+      {todos.map(item =>
+        <Todo
+          key={item.id}
+          id={item.id}
+          cls={item.cls}
+          paragraph={item.paragraph}
         />
       )}
     </ul>
   );
 }
+
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default TodoList;

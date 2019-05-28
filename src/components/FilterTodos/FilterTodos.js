@@ -3,9 +3,6 @@ import React from 'react';
 import './FilterTodos.scss';
 
 function FilterTodos() {
-  
-
-
   return (
     <div className="filter-todos">
       <a href='/' className='filter-todos__link js-active'>All</a>

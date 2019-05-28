@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "cls": "todo-list__todo",
+    "paragraph": "delectus aut autem",
+    "completed": "active"
+  },
+  {
+    "id": 2,
+    "cls": "todo-list__todo",
+    "paragraph": "quis ut nam facilis et officia qui",
+    "completed": "active"
+  },
+  {
+    "id": 3,
+    "cls": "todo-list__todo",
+    "paragraph": "fugiat veniam minus",
+    "completed": "active"
+  },
+  {
+    "id": 4,
+    "cls": "todo-list__todo",
+    "paragraph": "et porro tempora",
+    "completed": "complete"
+  },
+  {
+    "id": 5,
+    "cls": "todo-list__todo",
+    "paragraph": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+    "completed": "active"
+  },
+  {
+    "id": 6,
+    "cls": "todo-list__todo",
+    "paragraph": "qui ullam ratione quibusdam voluptatem quia omnis",
+    "completed": "active"
+  },
+  {
+    "id": 7,
+    "cls": "todo-list__todo",
+    "paragraph": "illo expedita consequatur quia in",
+    "completed": "active"
+  },
+  {
+    "id": 8,
+    "cls": "todo-list__todo",
+    "paragraph": "quo adipisci enim quam ut ab",
+    "completed": "complete"
+  },
+  {
+    "id": 9,
+    "cls": "todo-list__todo",
+    "paragraph": "molestiae perspiciatis ipsa",
+    "completed": "active"
+  },
+  {
+    "id": 10,
+    "cls": "todo-list__todo",
+    "paragraph": "illo est ratione doloremque quia maiores aut",
+    "completed": "delete"
+  }
+]

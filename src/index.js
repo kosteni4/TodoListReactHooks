@@ -1,67 +1,64 @@
-import React, {  useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import Loader from './components/Loader/Loader';
+import Context from './context/Context';
 import Title from './components/Title/Title';
 import AddTodo from './components/AddTodo/AddTodo';
-import FilterTodos from './components/FilterTodos/FilterTodos';
-import TodoList from './components/TodoList/TodoList';
 
 import './index.scss';
 
-function App() {
-  const todoList = [
-    {
-      id: '#1',
-      className: 'todo-list__todo',
-      paragraph: 'task 1',
-      status: 'active'
-    },
-    {
-      id: '#2',
-      className: 'todo-list__todo',
-      paragraph: 'task 2',
-      status: 'active'
-    },
-    {
-      id: '#3',
-      className: 'todo-list__todo',
-      paragraph: 'task complete',
-      status: 'complete'
-    },
-    {
-      id: '#4',
-      className: 'todo-list__todo',
-      paragraph: 'task delete',
-      status: 'delete'
-    }
-  ];
+const FilterTodos = React.lazy(() => import('./components/FilterTodos/FilterTodos'));
+const TodoList = React.lazy(() => import('./components/TodoList/TodoList'));
+const Nothing = React.lazy(() => import('./components/Nothing/Nothing'));
 
-  const [todos, setTodos] = useState(todoList);
+
+
+function App() {
+  const [todos, setTodos] = useState([]);
+  const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    fetch('./data.json')
+      .then(response => response.json())
+      .then(todos => {
+        setTodos(todos);
+        setLoader(false);
+      })
+  }, []);
+
+  function deleteTodo(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
+
+  function addTodo(value) {
+    setTodos(
+      todos.concat([
+        {
+          id: 'ID-' + value.replace(/\s/g, ''),
+          cls: 'todo-list__todo',
+          paragraph: value,
+          status: 'active'
+        }
+      ])
+    );
+  }
 
   return (
-    <React.Fragment>
+    <Context.Provider value={{ deleteTodo }}>
       <Title />
-      <AddTodo addTodo={todoText => {
-        const newTask = todoText.trim();
-        if (newTask.length > 0) {
-          setTodos([...todos, {
-            id: '#' + newTask.replace(/\s/g, ''),
-            className: 'todo-list__todo',
-            paragraph: newTask,
-            status: 'active'
-          }]);
+      <AddTodo addTodo={addTodo} />
+      <React.Suspense fallback={<Loader />}>
+        {todos.length
+          ? <React.Fragment>
+              <FilterTodos />
+              <TodoList todos={todos} />
+            </React.Fragment>
+          : loader
+            ? null
+            : <Nothing cls='paragraph'>No tasks :)</Nothing>
         }
-      }}/>
-      <FilterTodos />
-      <TodoList
-        todoList={todos}
-        deleteTodo={todoIndex => {
-          const newTodos = todos
-            .filter((_, index) => index !== todoIndex);
-
-          setTodos(newTodos);
-        }}
-      />
-    </React.Fragment>
+      </React.Suspense>
+    </Context.Provider>
   );
 }
 const rootElement = document.getElementById('root');
