@@ -2,9 +2,15 @@ import React from 'react';
 
 import './Title.scss';
 
-function Title() {
+function Title(props) {
+
+  const cls = props.cls;
+  const children = props.children;
+
   return (
-    <h1 className="title">Todo List with React Hooks</h1>
+    <h1 className={cls + ' title'}>
+      {children}
+    </h1>
   );
 }
 

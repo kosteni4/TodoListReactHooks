@@ -11,7 +11,7 @@ const FilterTodos = React.lazy(() => import('./components/FilterTodos/FilterTodo
 const TodoList = React.lazy(() => import('./components/TodoList/TodoList'));
 const Nothing = React.lazy(() => import('./components/Nothing/Nothing'));
 
-
+let countID = 0;
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -26,37 +26,57 @@ function App() {
       })
   }, []);
 
-  function deleteTodo(id) {
+  useEffect(() => {
+    document.title = todos.length > 1
+      ? todos.length + ' tasks'
+      : todos.length + ' task'
+  }, [todos.length]);
+
+  function handlerDeleteTodo(id) {
     setTodos(todos.filter(todo => todo.id !== id));
   }
 
-  function addTodo(value) {
-    setTodos(
-      todos.concat([
-        {
-          id: 'ID-' + value.replace(/\s/g, ''),
-          cls: 'todo-list__todo',
-          paragraph: value,
-          status: 'active'
-        }
-      ])
-    );
+  function handlerAddTodo(value) {
+    console.log('countID', countID);
+    countID = countID || todos.length;
+    setTodos([
+      ...todos,
+      {
+        id: ++countID,
+        cls: 'todo-list__todo',
+        paragraph: value.trim(),
+        status: 'actived'
+      }
+    ]);
   }
 
   return (
-    <Context.Provider value={{ deleteTodo }}>
-      <Title />
-      <AddTodo addTodo={addTodo} />
-      <React.Suspense fallback={<Loader />}>
-        {todos.length
-          ? <React.Fragment>
+    <Context.Provider>
+      <Title
+        cls='app__title'>
+          Todo List with React Hooks
+      </Title>
+      <AddTodo
+        onAddTodo={handlerAddTodo}
+      />
+      <React.Suspense
+        fallback={<Loader />}>
+          {todos.length
+            ? <React.Fragment>
               <FilterTodos />
-              <TodoList todos={todos} />
+              <TodoList
+                todos={todos}
+                cls='app__todo-list'
+                onDeleteTodo={handlerDeleteTodo}
+              />
             </React.Fragment>
-          : loader
-            ? null
-            : <Nothing cls='paragraph'>No tasks :)</Nothing>
-        }
+            : loader
+              ? null
+              : <Nothing
+                  cls='app__paragraph'>
+                    No tasks!
+                </Nothing>
+          }
       </React.Suspense>
     </Context.Provider>
   );

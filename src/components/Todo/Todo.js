@@ -1,5 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
-import Context from '../../context/Context';
+import React, { useState, useRef } from 'react';
 
 import './Todo.scss';
 
@@ -9,8 +8,6 @@ function Todo(props) {
   const [classActive, toggleTodoClass] = useState('');
 
   const inputRef = useRef(null);
-
-  const { deleteTodo } = useContext(Context);
 
   function handlerFocusTodo() {
     inputRef.current.focus();
@@ -32,7 +29,7 @@ function Todo(props) {
   }
 
   function handlerDeleteTodo() {
-    deleteTodo(props.id);
+    props.onDeleteTodo(props.id);
   }
 
   return (

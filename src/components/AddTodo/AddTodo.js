@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import './AddTodo.scss';
 
-function AddTodo({ addTodo }) {
+function AddTodo({ onAddTodo }) {
   const [value, setValue] = useState('');
 
   function handlerChange(event) {
@@ -14,7 +13,7 @@ function AddTodo({ addTodo }) {
     event.preventDefault();
 
     if (value.trim()) {
-      addTodo(value);
+      onAddTodo(value);
       setValue('');
     }
   }
@@ -37,9 +36,5 @@ function AddTodo({ addTodo }) {
     </form>
   );
 }
-
-AddTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired
-};
 
 export default AddTodo;
