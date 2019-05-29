@@ -11,14 +11,14 @@ function TodoList(props) {
   return (
     <ul className={cls + ' todo-list'}>
       {todos.map(item =>
-        <Todo
-          key={item.id}
-          id={item.id}
-          cls={item.cls}
-          paragraph={item.paragraph}
-          onDeleteTodo={props.onDeleteTodo}
-        />
-      )}
+          <Todo
+            key={item.id}
+            id={item.id}
+            cls={item.cls}
+            todo={item}
+            onDeleteTodo={props.onDeleteTodo}
+          />
+        )}
     </ul>
   );
 }

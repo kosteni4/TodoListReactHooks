@@ -15,13 +15,16 @@ let countID = 0;
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [todosDeleted, setTodosDeleted] = useState([]);
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     fetch('./data.json')
       .then(response => response.json())
       .then(todos => {
-        setTodos(todos);
+        countID = todos.length;
+        setTodos(todos.filter(item => item.status !== 'deleted'));
+        setTodosDeleted(todos.filter(item => item.status === 'deleted'));
         setLoader(false);
       })
   }, []);
@@ -34,11 +37,10 @@ function App() {
 
   function handlerDeleteTodo(id) {
     setTodos(todos.filter(todo => todo.id !== id));
+    setTodosDeleted(todosDeleted.filter(todo => todo.id === id));
   }
 
   function handlerAddTodo(value) {
-    console.log('countID', countID);
-    countID = countID || todos.length;
     setTodos([
       ...todos,
       {
@@ -66,6 +68,7 @@ function App() {
               <FilterTodos />
               <TodoList
                 todos={todos}
+                todosDeleted={todosDeleted}
                 cls='app__todo-list'
                 onDeleteTodo={handlerDeleteTodo}
               />
