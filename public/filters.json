@@ -1,26 +1,26 @@
 [
   {
     "id": "1",
-    "cls": "filter-todos__link",
+    "cls": "filter-todos__btn btn",
     "text": "All",
-    "href": "/"
+    "name": "all"
   },
   {
     "id": "2",
-    "cls": "filter-todos__link",
+    "cls": "filter-todos__btn btn",
     "text": "Active",
-    "href": "/active"
+    "name": "active"
   },
   {
     "id": "3",
-    "cls": "filter-todos__link",
+    "cls": "filter-todos__btn btn",
     "text": "Completed",
-    "href": "/completed"
+    "name": "completed"
   },
   {
     "id": "4",
-    "cls": "filter-todos__link",
+    "cls": "filter-todos__btn btn",
     "text": "Deleted",
-    "href": "/deteted"
+    "name": "deteted"
   }
 ]

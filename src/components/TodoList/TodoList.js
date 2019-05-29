@@ -17,6 +17,7 @@ function TodoList(props) {
             cls={item.cls}
             todo={item}
             onDeleteTodo={props.onDeleteTodo}
+            onSetStatus={props.onSetStatus}
           />
         )}
     </ul>

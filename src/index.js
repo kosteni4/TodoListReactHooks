@@ -17,6 +17,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [todosDeleted, setTodosDeleted] = useState([]);
   const [filters, setFilters] = useState([]);
+  // const [status, setStatus] = useState();
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
@@ -46,7 +47,8 @@ function App() {
 
   function handlerDeleteTodo(id) {
     setTodos(todos.filter(todo => todo.id !== id));
-    setTodosDeleted(todosDeleted.filter(todo => todo.id === id));
+    setTodosDeleted([...todosDeleted, ...todos.filter(todo => todo.id === id)]);
+    console.log(todosDeleted);
   }
 
   function handlerAddTodo(value) {
@@ -59,6 +61,16 @@ function App() {
         status: 'actived'
       }
     ]);
+  }
+
+  function handlerFilter(text) {
+    alert(text);
+  }
+
+  function handlerSetStatus(st) {
+    setTodos(todos.map(todo => todo.status = st));
+
+    console.log(todos);
   }
 
   return (
@@ -76,12 +88,14 @@ function App() {
             ? <React.Fragment>
               <FilterTodos
                 filters={filters}
+                onFilter={handlerFilter}
               />
               <TodoList
                 todos={todos}
                 todosDeleted={todosDeleted}
                 cls='app__todo-list'
                 onDeleteTodo={handlerDeleteTodo}
+                onSetStatus={handlerSetStatus}
               />
             </React.Fragment>
             : loader

@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import './Todo.scss';
 
 function Todo(props) {
-  const [status, setStatus] = useState(props.todo.status);
+  const status = props.todo.status;
   const [paragraph, editTodo] = useState(props.todo.paragraph);
   const [isChecked, toggleTodo] = useState(false);
   const [classActive, toggleTodoClass] = useState('');
@@ -13,7 +13,7 @@ function Todo(props) {
       toggleTodo(true);
       toggleTodoClass('js-active');
     }
-  }, [status]);
+  }, []);
 
   const inputRef = useRef(null);
 
@@ -34,7 +34,7 @@ function Todo(props) {
   function handlerToggleTodo() {
     toggleTodo(!isChecked);
     toggleTodoClass(!isChecked ? 'js-active' : '');
-    setStatus(!isChecked ? 'completed' : 'actived');
+    props.onSetStatus(!isChecked ? 'completed' : 'actived');
   }
 
   function handlerDeleteTodo() {
