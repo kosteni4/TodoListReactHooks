@@ -16,7 +16,16 @@ let countID = 0;
 function App() {
   const [todos, setTodos] = useState([]);
   const [todosDeleted, setTodosDeleted] = useState([]);
+  const [filters, setFilters] = useState([]);
   const [loader, setLoader] = useState(true);
+
+  useEffect(() => {
+    fetch('./filters.json')
+      .then(response => response.json())
+      .then(filters => {
+        setFilters(filters);
+      })
+  }, []);
 
   useEffect(() => {
     fetch('./data.json')
@@ -65,7 +74,9 @@ function App() {
         fallback={<Loader />}>
           {todos.length
             ? <React.Fragment>
-              <FilterTodos />
+              <FilterTodos
+                filters={filters}
+              />
               <TodoList
                 todos={todos}
                 todosDeleted={todosDeleted}
