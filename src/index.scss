@@ -21,18 +21,18 @@ body {
 
 ::-webkit-scrollbar {
   width: calc(1rem / 2);
-}
 
-::-webkit-scrollbar-track {
-  background: $color-main-light;
-}
+  &-track {
+    background: $color-main-light;
+  }
+  
+  &-thumb {
+    background: $color-main;
 
-::-webkit-scrollbar-thumb {
-  background: $color-main;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: $color-main-dark;
+    &:hover {
+      background: $color-main-dark;
+    }
+  }
 }
 
 .btn {
@@ -82,27 +82,29 @@ body {
   }
 }
 
-.app__title {
-  padding: 0;
-  margin: 0 0 $margin-l;
-  text-align: center;
-}
+.app {
+  &__title {
+    padding: 0;
+    margin: 0 0 $margin-l;
+    text-align: center;
+  }
 
-.app__filter-todos {
-  display: flex;
-  flex-wrap: wrap;
+  &__filter-todos {
+    display: flex;
+    flex-wrap: wrap;
 
-  margin-bottom: $margin-s;
-}
+    margin-bottom: $margin-s;
+  }
 
-.app__todo-list {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0 0 $margin-m;
-  max-width: $width-m;
+  &__todo-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0 0 $margin-m;
+    max-width: $width-m;
 
-  @media screen and (max-width: $width-m) {
-    max-width: $width-s;
+    @media screen and (max-width: $width-m) {
+      max-width: $width-s;
+    }
   }
 }
