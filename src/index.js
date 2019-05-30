@@ -63,13 +63,13 @@ function App() {
 
   function handlerAddTodo(value) {
     setTodos([
-      ...todos,
       {
         id: ++countID,
         cls: 'todo-list__todo',
         paragraph: value.trim(),
         status: 'actived'
-      }
+      },
+      ...todos
     ]);
   }
 
