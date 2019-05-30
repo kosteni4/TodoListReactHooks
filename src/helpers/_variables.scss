@@ -1,0 +1,25 @@
+$color-text-primary: #000;
+$color-text-invert: #fff;
+$color-text-secondary: rgba($color-text-primary, 0.8);
+$color-text-other: rgba($color-text-primary, 0.5);
+
+$color-btn-add: #4c9e4a;
+$color-btn-edit: #49579e;
+$color-btn-del: #a53c3c;
+$color-btn-default: #fff;
+
+$color-main: #3cc;
+$color-main-dark: #009999;
+$color-main-light: #c1e0e0;
+$color-accent: #006363;
+$color-white: #fff;
+
+$margin-s: 12px;
+$margin-xs: $margin-s / 2;
+$margin-m: $margin-s * 2;
+$margin-l: $margin-s * 3;
+
+$font-s: 16px;
+
+$width-s: 320px;
+$width-m: 568px;

@@ -1,0 +1,15 @@
+@import '../../helpers/variables';
+
+.add-todo {
+  display: flex;
+
+  margin-bottom: $margin-m;
+
+  &__input {
+    margin-right: $margin-xs;
+    padding: .25em .5em;
+
+    outline-color: $color-main-dark;
+    border: 1px solid $color-main-dark;
+  }
+}

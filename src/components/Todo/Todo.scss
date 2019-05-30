@@ -1,0 +1,108 @@
+@import '../../helpers/variables.scss';
+
+.todo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &.js-active {
+    .todo__paragraph {
+      text-decoration: line-through;
+      color: $color-text-other;
+    }
+  }
+
+  &__wrapper-checkbox {
+    flex-shrink: 0;
+
+    position: relative;
+
+    padding: 0;
+    margin: 0 $margin-xs 0 0;
+    width: 1em;
+    height: 1em;
+
+    cursor: pointer;
+  }
+
+  &__checkbox {
+    position: absolute;
+
+    opacity: 0;
+
+    height: 0;
+    width: 0;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    &:checked ~ .todo__checkmark {
+      background-color: $color-accent;
+
+      &:after {
+        display: block;
+      }
+    }
+  }
+
+  &__checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 1em;
+    width: 1em;
+
+    background-color: $color-white;
+
+    &:after {
+      content: '';
+
+      display: none;
+
+      position: absolute;
+      left: .4em;
+      top: .1em;
+
+      width: .2em;
+      height: .45em;
+
+      border: solid $color-white;
+
+      border-width: 0 .1em .1em 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &__paragraph {
+    // pointer-events: none;
+
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    border: none;
+    margin: 0;
+    padding: .25em;
+
+    background: rgba(#000, 0);
+
+    font-size: 1rem;
+
+    @media screen and (max-width: 568px) {
+      flex-grow: 0;
+      min-width: calc(320px - 1em - #{$margin-xs});
+    }
+
+  }
+
+  &__btn {
+    flex-shrink: 0;
+
+    margin-right: $margin-xs;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}

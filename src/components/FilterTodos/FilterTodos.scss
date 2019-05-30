@@ -1,0 +1,23 @@
+@import '../../helpers/variables';
+
+.filter-todos {
+  &__btn {
+    margin-bottom: $margin-s;
+    margin-right: $margin-xs;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover,
+    &:focus {
+      background: lighten($color-accent, 10);
+      color: $color-white;
+    }
+
+    &.js-active {
+      background: $color-accent;
+      color: $color-white;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@import '../../helpers/variables.scss';
+
+.todo-list {
+  &__todo {
+    margin-bottom: $margin-s;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

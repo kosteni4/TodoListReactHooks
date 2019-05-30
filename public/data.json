@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "cls": "todo-list__todo",
+    "paragraph": "delectus aut autem",
+    "status": "actived"
+  },
+  {
+    "id": 2,
+    "cls": "todo-list__todo",
+    "paragraph": "quis ut nam facilis",
+    "status": "actived"
+  },
+  {
+    "id": 3,
+    "cls": "todo-list__todo",
+    "paragraph": "fugiat veniam minus",
+    "status": "actived"
+  },
+  {
+    "id": 4,
+    "cls": "todo-list__todo",
+    "paragraph": "et porro tempora",
+    "status": "completed"
+  },
+  {
+    "id": 5,
+    "cls": "todo-list__todo",
+    "paragraph": "laboriosam mollitia et",
+    "status": "actived"
+  },
+  {
+    "id": 6,
+    "cls": "todo-list__todo",
+    "paragraph": "qui ullam ratione",
+    "status": "actived"
+  },
+  {
+    "id": 7,
+    "cls": "todo-list__todo",
+    "paragraph": "illo expedita consequatur",
+    "status": "actived"
+  },
+  {
+    "id": 8,
+    "cls": "todo-list__todo",
+    "paragraph": "quo enim quam ut ab",
+    "status": "completed"
+  },
+  {
+    "id": 9,
+    "cls": "todo-list__todo",
+    "paragraph": "molestiae ipsa",
+    "status": "actived"
+  },
+  {
+    "id": 10,
+    "cls": "todo-list__todo",
+    "paragraph": "illo est ratione ",
+    "status": "deleted"
+  }
+]
