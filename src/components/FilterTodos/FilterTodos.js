@@ -2,30 +2,27 @@ import React from 'react';
 
 import './FilterTodos.scss';
 
-function FilterTodos({ filters, onFilter }) {
+function FilterTodos({ cls, status, filters, onFilter }) {
 
   function handlerFilter(event) {
     onFilter(event.target.name)
   }
 
   return (
-    <div className="filter-todos">
+    <div className={`${cls} filter-todos`}>
       {
-        filters.map(btn =>
-          <button
+        filters.map(btn => {
+          const classActive = status === btn.name ? 'js-active' : '';
+          return <button
             type='text'
             key={btn.id}
-            className={btn.cls}
+            className={`${btn.cls} ${classActive}`}
             name={btn.name}
             onClick={handlerFilter}>
               {btn.text}
           </button>
-        )
+        })
       }
-      {/* <a href='/' className='filter-todos__link js-active'>All</a>
-      <a href='/active' className='filter-todos__link'>Active</a>
-      <a href='/completed' className='filter-todos__link'>Completed</a>
-      <a href='/deteted' className='filter-todos__link'>Deleted</a> */}
     </div>
   );
 }

@@ -2,9 +2,8 @@
 
 .todo {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-
-  font-size: 16px;
 
   &.js-active {
     .todo__paragraph {
@@ -80,22 +79,30 @@
     // pointer-events: none;
 
     flex-grow: 1;
+    flex-shrink: 0;
 
     border: none;
-    margin: 0 $margin-xs 0 0;
+    margin: 0;
     padding: .25em;
 
     background: rgba(#000, 0);
+
+    font-size: 1rem;
+
+    @media screen and (max-width: 568px) {
+      flex-grow: 0;
+      min-width: calc(320px - 1em - #{$margin-xs});
+    }
 
   }
 
   &__btn {
     flex-shrink: 0;
 
-    margin-left: $margin-xs;
+    margin-right: $margin-xs;
 
-    &:first-of-type {
-      margin-left: auto;
+    &:last-of-type {
+      margin-right: 0;
     }
   }
 }

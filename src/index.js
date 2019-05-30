@@ -16,8 +16,9 @@ let countID = 0;
 function App() {
   const [todos, setTodos] = useState([]);
   const [todosDeleted, setTodosDeleted] = useState([]);
+  const [todosVisible, setTodosVisible] = useState([]);
   const [filters, setFilters] = useState([]);
-  // const [status, setStatus] = useState();
+  const [status, setStatus] = useState('all');
   const [loader, setLoader] = useState(true);
 
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
       .then(todos => {
         countID = todos.length;
         setTodos(todos.filter(item => item.status !== 'deleted'));
+        setTodosVisible(todos.filter(item => item.status !== 'deleted'));
         setTodosDeleted(todos.filter(item => item.status === 'deleted'));
         setLoader(false);
       })
@@ -45,10 +47,18 @@ function App() {
       : todos.length + ' task'
   }, [todos.length]);
 
-  function handlerDeleteTodo(id) {
+  useEffect(() => {
+    if (status === 'all') setTodosVisible(todos);
+  }, [todos]);
+
+  function handlerDeleteTodo(id, st) {
+    handlerSetStatus(id, st);
     setTodos(todos.filter(todo => todo.id !== id));
-    setTodosDeleted([...todosDeleted, ...todos.filter(todo => todo.id === id)]);
-    console.log(todosDeleted);
+    setTodosVisible(todosVisible.filter(todo => todo.id !== id));
+    setTodosDeleted([
+      ...todosDeleted,
+      ...todos.filter(todo => todo.id === id)
+    ]);
   }
 
   function handlerAddTodo(value) {
@@ -64,13 +74,36 @@ function App() {
   }
 
   function handlerFilter(text) {
-    alert(text);
+    switch (text) {
+      case 'all':
+        setStatus('all');
+        return setTodosVisible(todos);
+
+      case 'actived':
+        setStatus('actived');
+        return setTodosVisible(todos.filter(todo =>
+          todo.status === 'actived'));
+
+      case 'completed':
+        setStatus('completed');
+        return setTodosVisible(todos.filter(todo =>
+          todo.status === 'completed'));
+
+      case 'deleted':
+        setStatus('deleted');
+        return setTodosVisible(todosDeleted);
+
+      default:
+        setStatus('all');
+        return setTodosVisible(todos);
+    }
   }
 
-  function handlerSetStatus(st) {
-    setTodos(todos.map(todo => todo.status = st));
-
-    console.log(todos);
+  function handlerSetStatus(id, st) {
+    setTodos(todos.map(todo => {
+      if (todo.id === id) todo.status = st;
+      return todo;
+    }));
   }
 
   return (
@@ -87,12 +120,13 @@ function App() {
           {todos.length
             ? <React.Fragment>
               <FilterTodos
+                cls='app__filter-todos'
+                status={status}
                 filters={filters}
                 onFilter={handlerFilter}
               />
               <TodoList
-                todos={todos}
-                todosDeleted={todosDeleted}
+                todos={todosVisible}
                 cls='app__todo-list'
                 onDeleteTodo={handlerDeleteTodo}
                 onSetStatus={handlerSetStatus}

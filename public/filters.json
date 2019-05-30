@@ -1,26 +1,26 @@
 [
   {
     "id": "1",
-    "cls": "filter-todos__btn btn",
+    "cls": "filter-todos__btn btn btn--default",
     "text": "All",
     "name": "all"
   },
   {
     "id": "2",
-    "cls": "filter-todos__btn btn",
+    "cls": "filter-todos__btn btn btn--default",
     "text": "Active",
-    "name": "active"
+    "name": "actived"
   },
   {
     "id": "3",
-    "cls": "filter-todos__btn btn",
+    "cls": "filter-todos__btn btn btn--default",
     "text": "Completed",
     "name": "completed"
   },
   {
     "id": "4",
-    "cls": "filter-todos__btn btn",
+    "cls": "filter-todos__btn btn btn--default",
     "text": "Deleted",
-    "name": "deteted"
+    "name": "deleted"
   }
 ]

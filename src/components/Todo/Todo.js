@@ -4,6 +4,7 @@ import './Todo.scss';
 
 function Todo(props) {
   const status = props.todo.status;
+
   const [paragraph, editTodo] = useState(props.todo.paragraph);
   const [isChecked, toggleTodo] = useState(false);
   const [classActive, toggleTodoClass] = useState('');
@@ -13,7 +14,7 @@ function Todo(props) {
       toggleTodo(true);
       toggleTodoClass('js-active');
     }
-  }, []);
+  }, [status]);
 
   const inputRef = useRef(null);
 
@@ -34,11 +35,11 @@ function Todo(props) {
   function handlerToggleTodo() {
     toggleTodo(!isChecked);
     toggleTodoClass(!isChecked ? 'js-active' : '');
-    props.onSetStatus(!isChecked ? 'completed' : 'actived');
+    props.onSetStatus(props.id, !isChecked ? 'completed' : 'actived');
   }
 
   function handlerDeleteTodo() {
-    props.onDeleteTodo(props.id);
+    props.onDeleteTodo(props.id, 'deleted');
   }
 
   return (
